@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: claude2api
+    runtime: docker
+    plan: free
+    region: oregon
+    branch: main
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    envVars:
+      - key: PORT
+        sync: false
+      - key: SESSIONS
+        sync: false
+      - key: APIKEY
+        sync: false
+      - key: PROXY
+        sync: false
+      - key: CHAT_DELETE
+        value: true
+      - key: MAX_CHAT_HISTORY_LENGTH
+        value: 10000
+      - key: ENABLE_MIRROR_API
+        value: false
+      - key: MIRROR_API_PREFIX
+        value: /mirror
+    healthCheckPath: /
+    autoDeploy: true
+    buildCommand: echo "Using Docker build"
+    startCommand: ./main

@@ -127,7 +127,12 @@ func LoadConfig() *Config {
 
 	// 如果地址为空，使用默认值
 	if config.Address == "" {
-		config.Address = "0.0.0.0:8080"
+		// Render uses PORT environment variable
+		port := os.Getenv("PORT")
+		if port == "" {
+			port = "8080"
+		}
+		config.Address = "0.0.0.0:" + port
 	}
 	return config
 }

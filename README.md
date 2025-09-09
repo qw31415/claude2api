@@ -23,14 +23,67 @@ To explore the functionalities and capabilities of Claude2API, visit the followi
 
 By leveraging Claude2API, users can seamlessly transition their web services into powerful API services, enhancing the overall functionality and user experience of their applications. Through a user-friendly interface and robust features, Claude2API empowers developers to unlock new possibilities and streamline their workflows.
 
-🔗 **Explore Claude2API:**
+## 🚀 Deployment Options
 
-Ready to dive into the world of API services with Claude2API? Click the button below to download and execute Claude2API now!
+### Local Development
+For local development and testing:
+1. Clone this repository
+2. Copy `.env.example` to `.env` and configure your settings
+3. Run with Go: `go run main.go`
+4. Or build and run: `go build -o claude2api && ./claude2api`
 
-[![Download Claude2API](https://img.shields.io/badge/Download-Claude2API-brightgreen)](https://github.com/chukwuemekawisdom/claude2api/releases)
+### Docker Deployment
+Build and run with Docker:
+```bash
+docker build -t claude2api .
+docker run -p 8080:8080 --env-file .env claude2api
+```
 
-📌 **Note:**
+### ☁️ Render Cloud Deployment (Recommended)
 
-If the provided link requires a specific file download and execution, please follow the instructions provided to get started with Claude2API. If you encounter any issues with the link, be sure to check the "Releases" section of this repository for alternative options.
+This project is optimized for deployment on Render. See [RENDER_DEPLOYMENT.md](./RENDER_DEPLOYMENT.md) for detailed instructions.
+
+**Quick Deploy to Render:**
+1. Fork this repository to your GitHub account
+2. Connect your GitHub repo to Render
+3. Render will automatically detect the `render.yaml` configuration
+4. Set your environment variables (SESSIONS, APIKEY, etc.)
+5. Deploy!
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
+
+## 🔧 Configuration
+
+Required environment variables:
+- `SESSIONS`: Claude session tokens (comma-separated)
+- `APIKEY`: Your API authentication key
+
+Optional variables:
+- `PORT`: Server port (auto-set by Render)
+- `PROXY`: Proxy server URL
+- `CHAT_DELETE`: Auto-delete chats (default: true)
+- `MAX_CHAT_HISTORY_LENGTH`: Max chat history length (default: 10000)
+
+## 📖 API Documentation
+
+Once deployed, your Claude2API instance will provide:
+
+**Health Check:**
+- `GET /` or `GET /health` - Service health status
+
+**OpenAI-Compatible Endpoints:**
+- `POST /v1/chat/completions` - Chat completions
+- `GET /v1/models` - Available models
+
+**HuggingFace-Compatible Endpoints:**
+- `POST /hf/v1/chat/completions` - Chat completions
+- `GET /hf/v1/models` - Available models
+
+## 🔗 **Explore Claude2API:**
+
+Ready to dive into the world of API services with Claude2API? Deploy to the cloud with Render or download and run locally!
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
+[![Download Claude2API](https://img.shields.io/badge/Download-Claude2API-brightgreen)](https://github.com/qw31415/claude2api/releases)
 
 Thank you for choosing Claude2API - your gateway to enhanced API services and innovative solutions. Experience the power of Claude2API today!

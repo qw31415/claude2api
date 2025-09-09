@@ -13,7 +13,8 @@ func SetupRoutes(r *gin.Engine) {
 	r.Use(middleware.CORSMiddleware())
 	r.Use(middleware.AuthMiddleware())
 
-	// Health check endpoint
+	// Health check endpoints
+	r.GET("/", service.HealthCheckHandler)
 	r.GET("/health", service.HealthCheckHandler)
 
 	// Chat completions endpoint (OpenAI-compatible)
