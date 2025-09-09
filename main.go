@@ -14,7 +14,7 @@ func main() {
 	// Setup all routes
 	router.SetupRoutes(r)
 
-	// Run the server on 0.0.0.0:8080
+	// Run the server on 0.0.0.0:10000
 	r.Run(config.ConfigInstance.Address)
 }
 
@@ -38,3 +38,4 @@ func main() {
   })
   r.Run(":" + port)
 }
+
